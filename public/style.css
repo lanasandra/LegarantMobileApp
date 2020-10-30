@@ -30,8 +30,8 @@ body
     width: 100%;
 }
 
-#inputUserName, #inputPassword
-{
+/*#inputUserName, #inputPassword
+//{
     width: 100%;
     height: 28px;
     font-size: 1em;
@@ -39,7 +39,7 @@ body
     color: grey;
     margin-top: 3px;
     margin-bottom: 15px;
-}
+}*/
 
 #validateButton, #registerButton
 {

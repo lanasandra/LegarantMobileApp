@@ -1,12 +1,10 @@
 {
   "name": "Mobile App LEGARANT",
   "description": "Heroku Connect Mobile App - LEGARANT",
-  "repository": "https://github.com/CyrilLepretre/SalesforceProjet12",
-  "success_url": "/setup.html",
-  "env": {
-    "PGSSLMODE": {
-      "description": "Require SSL for Postgres",
-      "value": "require"
-    }
-  }
+  "repository": "https://github.com/lanasandra/LegarantMobileApp",
+  "success_url": "/index.html",
+  "addons": [
+    "heroku-postgresql"
+  ]
 }
+

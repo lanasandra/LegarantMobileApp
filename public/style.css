@@ -30,7 +30,7 @@ body
     width: 100%;
 }
 
-.inputFields
+#inputUserName, inputPassword
 {
     width: 100%;
     height: 28px;
@@ -56,4 +56,8 @@ body
 .footerform
 {
     font-size: small;
+}
+#contactDetails
+{
+  display : none;
 }

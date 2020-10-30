@@ -13,21 +13,30 @@
 			<br>
 			<h3 class="h3">Login</h3>
 		</div>
-		<form class='loginForm'>
+		<form id='loginForm'>
 			<div class=fieldsForm>
 				<div class= "blocFields">
 			 		<label class="label" title="Insert your email">Username</label><br/>
-					 <input class="inputFields" type="email" required>
+					 <input class="inputUserName" type="email" required>
 				</div>
 				<div class= "blocFields">
 			 		<label="label">Password</label><br/>
-					 <input class="inputFields" type="password" required> <br/>
+					 <input class="inputPassword" type="password" required> <br/>
 				</div>
 			 <button id=validateButton>Login</button>
 			</div>
 			<p class="footerform">Don't have an account yet ? <a id="signInLink" href="registerPage.html">Sign-in</a></p>
 		</form>
-		
+	</div>
+	<div id='contactDetails'>
+		<p id=contLastName></p>
+		<p id=contFirstName></p>
+		<p id=contEmail></p>
+		<p id=contPhone></p>
+		<div>
+		 	<button id=updateDetails>Update your contact details</button>
+		</div>
+	</div>
 		<script src="app.js"></script>
 	
   	</body>

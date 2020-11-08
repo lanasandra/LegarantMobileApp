@@ -1,12 +1,12 @@
 @font-face 
 {
   font-family: 'Source Sans Pro';
-  src: url("./Fonts/SourceSansPro-ExtraLight.eot");
-  src: url("./Fonts/SourceSansPro-ExtraLight.eot?#iefix") format("embedded-opentype"),
-       url("./Fonts/SourceSansPro-ExtraLight.woff2") format("woff2"), 
-       url("./Fonts/SourceSansPro-ExtraLight.woff") format("woff"), 
-       url("./Fonts/SourceSansPro-ExtraLight.ttf") format("truetype"), 
-       url("./Fonts/SourceSansPro-ExtraLight.svg#SourceSansPro-ExtraLight") format("svg");
+  src: url("Fonts/SourceSansPro-ExtraLight.eot");
+  src: url("Fonts/SourceSansPro-ExtraLight.eot?#iefix") format("embedded-opentype"),
+       url("Fonts/SourceSansPro-ExtraLight.woff2") format("woff2"), 
+       url("Fonts/SourceSansPro-ExtraLight.woff") format("woff"), 
+       url("Fonts/SourceSansPro-ExtraLight.ttf") format("truetype"), 
+       url("Fonts/SourceSansPro-ExtraLight.svg#SourceSansPro-ExtraLight") format("svg");
   font-weight: normal;
   font-style: normal;
 }

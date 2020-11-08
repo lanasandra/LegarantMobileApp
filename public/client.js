@@ -166,6 +166,7 @@ registerButton.addEventListener('click', function(e){
 updateButton.addEventListener('click', function(e){
   e.preventDefault();
  
+  console.log(contactFirstName.value,contactLastName.value, contactEmail.value,contactPhone.value,contactStreet.value, contactCountry.value, contactSalesforceId.value)
   console.log('button was clicked');
   
 

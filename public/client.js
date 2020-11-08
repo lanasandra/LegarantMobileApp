@@ -175,9 +175,9 @@ updateButton.addEventListener('click', function(e){
     firstName: document.getElementById("salesFirstName").value,
     lastName: document.getElementById("salesLastName").value,
     email: document.getElementById("salesEmail").value,
-    phone:  document.getElementById("salesPhoneNumber").value,
+    phone: document.getElementById("salesPhoneNumber").value,
     mailingStreet: document.getElementById("salesStreet").value,
-    mailingCity:document.getElementById("salesCity").value,
+    mailingCity: document.getElementById("salesCity").value,
     mailingCountry:  document.getElementById("salesCountry").value,
     salesforcId:  document.getElementById("salesSalesforceId").value
     }));

@@ -21,11 +21,6 @@ var welcomePage = document.getElementById("welcomePage");
 var informationsPage = document.getElementById("informationsPage")
 /*-----------------------------------------------------------------------*/
 
-// For test
-const getContactNumbers = document.getElementById("getContactNumbers");
-const  getContractNumbers = document.getElementById("getContractNumbers");
-
-/*-----------------------------------------------------------------------*/
 
 // Display resister page Fields
 registerLink.addEventListener('click', displayRegisterPage);

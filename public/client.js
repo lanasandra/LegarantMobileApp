@@ -235,20 +235,20 @@ function displayLegarantProduct() {
         
       // display product informations 
 
-      for(let i = 0; i < 10; i++) {
+      for (var product in response) {
         
-        displayProducts(response[i])
+        displayProducts(response[product])
 
       }
   }   
   xhr.send();
 }
 
-function displayProducts(response){
+function displayProducts(product){
 
-  var productCode                                 = response.productcode;
-  var productName                                 = response.name;
-  var productPrice                                = response.unitprice;
+  var productCode                                 = product.productcode;
+  var productName                                 = product.name;
+  var productPrice                                = product.unitprice;
 
   var productItem                                 = document.createElement("div"); 
       productItem.className                       = "productItem";

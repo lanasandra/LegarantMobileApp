@@ -129,3 +129,8 @@ text-align: left;
   font-family: 'Source Sans Pro', arial, sans-serif;
   color: green;
 }
+
+.productNameItem
+{
+  font-weight: bold;
+}

@@ -62,7 +62,7 @@ function displayLoginPage() {
 
 /*-----------------------------------------------------------------------*/
 
-// Requests on buttons
+// REQUESTS TO SERVER
 
 // Log a contact already registered
 loginButton.addEventListener('click', function(e) {
@@ -81,27 +81,17 @@ loginButton.addEventListener('click', function(e) {
       response = JSON.parse(xhr.response);
       console.log("response", response.firstname);
 
+      // Call function to display contact details
+        displayContractDetails(response);
+
       // Call function to display contract details
         displayContractDetails(response.sfid);
 
       // Call function to display Legarant products
-
         displayLegarantProduct();
       
-        // display contact informations 
-        welcomePage.style.display="none";
-        informationsPage.style.display="block";
-
-        document.getElementById("welcomePersonalSpace").textContent = "Welcome "+response.firstname+" to your personal space";
-       
-        document.getElementById("salesFirstName").value             = response.firstname
-        document.getElementById("salesLastName").value              = response.lastname
-        document.getElementById("salesEmail").value                 = response.email
-        document.getElementById("salesPhoneNumber").value           = response.phone
-        document.getElementById("salesStreet").value                = response.mailingstreet
-        document.getElementById("salesCity").value                  = response.mailingcity
-        document.getElementById("salesCountry").value               = response.mailingcountry
-        document.getElementById("salesSalesforceId").value          = response.sfid
+      // display contact informations 
+        displayContactInformations(response.firstName);  
   
 
     };
@@ -130,28 +120,17 @@ registerButton.addEventListener('click', function(e){
 
       alert("Votre mot de passe a bien été enregistré !");
 
+      // Call function to display contact details
+        displayContractDetails(response);
+
       // Call function to display contract details
         displayContractDetails(response.sfid);
 
       // Call function to display Legarant products
-
         displayLegarantProduct();
       
-        // display contact informations 
-        welcomePage.style.display="none";
-        informationsPage.style.display="block";
-
-        document.getElementById("welcomePersonalSpace").textContent = "Welcome "+response.firstname+" to your personal space";
-        
-        document.getElementById("salesFirstName").value             = response.firstname
-        document.getElementById("salesLastName").value              = response.lastname
-        document.getElementById("salesEmail").value                 = response.email
-        document.getElementById("salesPhoneNumber").value           = response.phone
-        document.getElementById("salesStreet").value                = response.mailingstreet
-        document.getElementById("salesCity").value                  = response.mailingcity
-        document.getElementById("salesCountry").value               = response.mailingcountry
-        document.getElementById("salesSalesforceId").value          = response.sfid
-  
+      // display contact informations 
+        displayContactInformations(response.firstName);        
 
     };
   xhr.send(JSON.stringify({
@@ -193,8 +172,29 @@ updateButton.addEventListener('click', function(e){
     }));
 });
 
+/*-----------------------------------------------------------------------*/
 
+// FUNCTIONS
 
+function displayContactInformations(firstname) {
+        welcomePage.style.display="none";
+        informationsPage.style.display="block";
+
+        document.getElementById("welcomePersonalSpace").textContent = "Welcome "+firstname+" to your personal space";
+}
+
+function displayContactDetails(contact){
+
+  document.getElementById("salesFirstName").value             = contact.firstname
+  document.getElementById("salesLastName").value              = contact.lastname
+  document.getElementById("salesEmail").value                 = contact.email
+  document.getElementById("salesPhoneNumber").value           = contact.phone
+  document.getElementById("salesStreet").value                = contact.mailingstreet
+  document.getElementById("salesCity").value                  = contact.mailingcity
+  document.getElementById("salesCountry").value               = contact.mailingcountry
+  document.getElementById("salesSalesforceId").value          = contact.sfid
+
+}
 
 function displayContractDetails(salesforceId){
 
@@ -235,9 +235,12 @@ function displayLegarantProduct() {
         
       // display product informations 
 
-      for(let i = 0; i < 10; i++) displayProducts(response[i])
+      for(let i = 0; i < 10; i++) {
+        
+        displayProducts(response)
 
       }
+  }   
   xhr.send();
 }
 

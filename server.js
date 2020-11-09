@@ -15,7 +15,7 @@ app.use(express.json());
 // Parse URL-encoded bodies (as sent by HTML forms)
 app.use(express.urlencoded({ extended: true }))
 
-// Creation de ta connexion postgres
+// Creation of the connection to postgres
 const { Client } = require('pg');
 const { parse } = require('path');
 const { REFUSED } = require('dns');

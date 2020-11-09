@@ -77,7 +77,7 @@ loginButton.addEventListener('click', function(e) {
   xhr.setRequestHeader("Content-type", "application/json");
   xhr.onload = function () {
 
-    if (request.readyState === XMLHttpRequest.DONE && request.status === 200) {
+    if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
       
       response = JSON.parse(xhr.response);
       
@@ -98,7 +98,7 @@ loginButton.addEventListener('click', function(e) {
       document.getElementById("errorMessage").innerHTML= "Sorry but we couldn't find your account with these informations."
     }
   };
-  
+
   xhr.send(JSON.stringify({
     password: passwordInput.value,
     email: emailInput.value
@@ -118,7 +118,7 @@ registerButton.addEventListener('click', function(e){
   xhr.setRequestHeader("Content-type", "application/json");
   xhr.onload = function () {
 
-    if (request.readyState === XMLHttpRequest.DONE && request.status === 200) {
+    if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
       
       response = JSON.parse(xhr.response);
       
@@ -214,7 +214,7 @@ function displayContractDetails(salesforceId){
   xhr.setRequestHeader("Content-type", "application/json");
   xhr.onload = function () {
       
-    if (request.readyState === XMLHttpRequest.DONE && request.status === 200) {
+    if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
       
       response = JSON.parse(xhr.response);
       

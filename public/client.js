@@ -176,23 +176,23 @@ updateButton.addEventListener('click', function(e){
 
 // FUNCTIONS
 
-function displayContactInformations(firstname) {
+function displayContactInformations(contactFirstName) {
         welcomePage.style.display="none";
         informationsPage.style.display="block";
 
-        document.getElementById("welcomePersonalSpace").textContent = "Welcome "+firstname+" to your personal space";
+        document.getElementById("welcomePersonalSpace").textContent = "Welcome "+contactFirstName+" to your personal space";
 }
 
-function displayContactDetails(contact){
+function displayContactDetails(response){
 
-  document.getElementById("salesFirstName").value             = contact.firstname
-  document.getElementById("salesLastName").value              = contact.lastname
-  document.getElementById("salesEmail").value                 = contact.email
-  document.getElementById("salesPhoneNumber").value           = contact.phone
-  document.getElementById("salesStreet").value                = contact.mailingstreet
-  document.getElementById("salesCity").value                  = contact.mailingcity
-  document.getElementById("salesCountry").value               = contact.mailingcountry
-  document.getElementById("salesSalesforceId").value          = contact.sfid
+  document.getElementById("salesFirstName").value             = response.firstname
+  document.getElementById("salesLastName").value              = response.lastname
+  document.getElementById("salesEmail").value                 = response.email
+  document.getElementById("salesPhoneNumber").value           = response.phone
+  document.getElementById("salesStreet").value                = response.mailingstreet
+  document.getElementById("salesCity").value                  = response.mailingcity
+  document.getElementById("salesCountry").value               = response.mailingcountry
+  document.getElementById("salesSalesforceId").value          = response.sfid
 
 }
 
@@ -237,18 +237,18 @@ function displayLegarantProduct() {
 
       for(let i = 0; i < 10; i++) {
         
-        displayProducts(response)
+        displayProducts(response[i])
 
       }
   }   
   xhr.send();
 }
 
-function displayProducts(product){
+function displayProducts(response){
 
-  var productCode                                 = product.productcode;
-  var productName                                 = product.name;
-  var productPrice                                = product.unitprice;
+  var productCode                                 = response.productcode;
+  var productName                                 = response.name;
+  var productPrice                                = response.unitprice;
 
   var productItem                                 = document.createElement("div"); 
       productItem.className                       = "productItem";

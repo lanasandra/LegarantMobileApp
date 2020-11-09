@@ -50,11 +50,11 @@ app.post('/api/getContact', (req, res) => {
   client.query(query).then(response => {
      
     res.status(200).json(response.rows[0]);
-    console.log(response.rows);
+
   }).catch(err => {
-    res.status(500).json({ "message": err});
-   console.log({ "message": err});
-  
+
+    res.status(500).json({ "message": "Sorry but we couldn't find your account with these informations."});
+
   })
 });
 

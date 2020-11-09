@@ -75,16 +75,13 @@ loginButton.addEventListener('click', function(e) {
   var xhr = new XMLHttpRequest();
   xhr.open('POST', '/api/getContact', true);
   xhr.setRequestHeader("Content-type", "application/json");
-  xhr.send(JSON.stringify({
-    password: passwordInput.value,
-    email: emailInput.value
-  }));
+  
   xhr.onload = function() {
-
-    if (xhr.status === 200) {
-      
+     
       response = JSON.parse(xhr.response);
       
+      if (response.status === 200) {
+        
       // Call function to display contact details
         displayContactDetails(response);
 
@@ -99,9 +96,15 @@ loginButton.addEventListener('click', function(e) {
 
     } else {
 
-      document.getElementById("errorMessage").innerHTML= "Sorry but we couldn't find your account with these informations."
+      document.getElementById("errorMessage").innerHTML= response.message;
     }
   };
+
+  xhr.send(JSON.stringify({
+    password: passwordInput.value,
+    email: emailInput.value
+  }));
+
 });
 
 // Register a new contact

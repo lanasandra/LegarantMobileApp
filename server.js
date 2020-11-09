@@ -135,11 +135,3 @@ app.post('/api/update', (req, res) => {
 app.listen(app.get('port'), function () {
   console.log('Express server listening on port ' + app.get('port'));
 });
-
-const query = {
-  text: 'UPDATE salesforce.Contact SET firstname=$1 AND lastname=$2 AND email=$3 AND phone=$4 AND mailingstreet=$5 AND mailingcity=$6 AND mailingcountry=$7 WHERE sfid= $8',
-  values: ["Avi", "Green", "agreen@uog.com", "(212) 842-2382", "1302 Avenue of the Americas", "New York", "United States", "00309000003IhI0AAK"]
-  }
-  console.log(res.status(200).json({
-    "message": "Your contact details have been updated"
-  }))

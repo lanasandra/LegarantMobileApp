@@ -155,9 +155,10 @@ updateButton.addEventListener('click', function(e){
   xhr.setRequestHeader("Content-type", "application/json");
   xhr.onload = function () {
       // do something to response
-      //console.log("xhr.response", xhr.response);
-      
-        document.getElementById("updateMessage").textContent = "Your contact details have been updated !"
+        response = JSON.parse(xhr.response);
+        console.log("xhr.response", xhr.response);
+
+        document.getElementById("updateMessage").textContent = response.message;
 
     };
   xhr.send(JSON.stringify({

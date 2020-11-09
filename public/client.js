@@ -82,7 +82,7 @@ loginButton.addEventListener('click', function(e) {
       console.log("response", response.firstname);
 
       // Call function to display contact details
-        displayContractDetails(response);
+        displayContactDetails(response);
 
       // Call function to display contract details
         displayContractDetails(response.sfid);
@@ -121,7 +121,7 @@ registerButton.addEventListener('click', function(e){
       alert("Votre mot de passe a bien été enregistré !");
 
       // Call function to display contact details
-        displayContractDetails(response);
+        displayContactDetails(response);
 
       // Call function to display contract details
         displayContractDetails(response.sfid);

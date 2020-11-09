@@ -91,7 +91,7 @@ loginButton.addEventListener('click', function(e) {
         displayLegarantProduct();
       
       // display contact informations 
-        displayContactInformations(response.firstName);  
+        displayContactInformations(response.firstname);  
   
 
     };
@@ -130,7 +130,7 @@ registerButton.addEventListener('click', function(e){
         displayLegarantProduct();
       
       // display contact informations 
-        displayContactInformations(response.firstName);        
+        displayContactInformations(response.firstname);        
 
     };
   xhr.send(JSON.stringify({
@@ -176,11 +176,11 @@ updateButton.addEventListener('click', function(e){
 
 // FUNCTIONS
 
-function displayContactInformations(firstNameWelcome) {
+function displayContactInformations(firstName) {
         welcomePage.style.display="none";
         informationsPage.style.display="block";
 
-        document.getElementById("welcomePersonalSpace").textContent = "Welcome "+firstNameWelcome+" to your personal space";
+        document.getElementById("welcomePersonalSpace").textContent = "Welcome "+firstName+" to your personal space";
 }
 
 function displayContactDetails(contact){

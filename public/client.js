@@ -168,7 +168,7 @@ updateButton.addEventListener('click', function(e){
     mailingStreet:  contactStreet.value,
     mailingCity:    contactCity.value,
     mailingCountry: contactCountry.value,
-    salesforcId:    contactSalesforceId.value
+    sfid:           contactSalesforceId.value
     }));
 });
 
@@ -176,23 +176,23 @@ updateButton.addEventListener('click', function(e){
 
 // FUNCTIONS
 
-function displayContactInformations(contactFirstName) {
+function displayContactInformations(firstNameWelcome) {
         welcomePage.style.display="none";
         informationsPage.style.display="block";
 
-        document.getElementById("welcomePersonalSpace").textContent = "Welcome "+contactFirstName+" to your personal space";
+        document.getElementById("welcomePersonalSpace").textContent = "Welcome "+firstNameWelcome+" to your personal space";
 }
 
-function displayContactDetails(response){
+function displayContactDetails(contact){
 
-  document.getElementById("salesFirstName").value             = response.firstname
-  document.getElementById("salesLastName").value              = response.lastname
-  document.getElementById("salesEmail").value                 = response.email
-  document.getElementById("salesPhoneNumber").value           = response.phone
-  document.getElementById("salesStreet").value                = response.mailingstreet
-  document.getElementById("salesCity").value                  = response.mailingcity
-  document.getElementById("salesCountry").value               = response.mailingcountry
-  document.getElementById("salesSalesforceId").value          = response.sfid
+  contactFirstName.value    = contact.firstname
+  contactLastName.value     = contact.lastname
+  contactEmail.value        = contact.email
+  contactPhone.value        = contact.phone
+  contactStreet.value       = contact.mailingstreet
+  contactCity.value         = contact.mailingcity
+  contactCountry.value      = contact.mailingcountry
+  contactSalesforceId.value = contact.sfid
 
 }
 

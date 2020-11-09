@@ -120,11 +120,11 @@ app.post('/api/update', (req, res) => {
     
   const query = {
     text: 'UPDATE salesforce.Contact SET firstname=$1 AND lastname=$2 AND email=$3 AND phone=$4 AND mailingstreet=$5 AND mailingcity=$6 AND mailingcountry=$7 WHERE sfid= $8',
-    values: [req.body.firstName, req.body.lastName, req.body.email, req.body.phone, req.body.mailingStreet, req.body.mailingCity, req.body.mailingCountry, req.body.salesforcId]
+    values: [req.body.firstName, req.body.lastName, req.body.email, req.body.phone, req.body.mailingStreet, req.body.mailingCity, req.body.mailingCountry, req.body.sfid]
     }
   client.query(query).then(response => {
      
-    res.status(200).json();
+    res.status(200);
     
   }).catch(err => {
     res.status(500).json({ "message": err});

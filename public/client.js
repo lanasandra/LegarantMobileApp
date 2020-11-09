@@ -81,7 +81,7 @@ loginButton.addEventListener('click', function(e) {
   }));
   xhr.onload = function () {
 
-    if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+    if (xhr.status == 200) {
       
       response = JSON.parse(xhr.response);
       

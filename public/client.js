@@ -211,8 +211,8 @@ function displayContractDetails(salesforceId){
         // display contract informations 
         
         document.getElementById("contactContractNumber").innerHTML    = "Contract Number: "+response.contractnumber;
-        document.getElementById("contactContractStartDate").innerHTML = "Contract Start Date: "+response.startdate;
-        document.getElementById("contactContractEndDate").innerHTML   = "Contract End Date: "+response.enddate;
+        document.getElementById("contactContractStartDate").innerHTML = "Contract Start Date: "+(response.startdate).split("T")[0];
+        document.getElementById("contactContractEndDate").innerHTML   = "Contract End Date: "+(response.enddate).split("T")[0];
         document.getElementById("contactContractTerm").innerHTML      = "Contract Term (months): "+response.contractterm;
        
   
@@ -247,17 +247,13 @@ function displayLegarantProduct() {
 
 function displayProducts(product){
 
-  var productCode                                 = product.productcode;
   var productName                                 = product.name;
+  var productCode                                 = product.productcode;
   var productPrice                                = product.unitprice;
 
   var productItem                                 = document.createElement("div"); 
       productItem.className                       = "productItem";
       blocProductDetails.appendChild(productItem)
-
-  var productCodeItem                             = document.createElement("p");
-      productCodeItem.className                   = "productCodeItem";
-      productItem.appendChild(productCodeItem);
 
   var productNameItem                             = document.createElement("p");
       productNameItem.className                   = "productNameItem";
@@ -267,10 +263,13 @@ function displayProducts(product){
       productPriceItem.className                  = "productPriceItem";
       productItem.appendChild(productPriceItem);
 
+  var productCodeItem                             = document.createElement("p");
+      productCodeItem.className                   = "productCodeItem";
+      productItem.appendChild(productCodeItem);
 
-      productCodeItem.innerHTML                 = "Product Code: "+productCode;
-      productNameItem.innerHTML                 = "Product Name: "+productName;
-      productPriceItem.innerHTML                = "Unit Price: "+euro.format(productPrice);  
+      productCodeItem.innerHTML                   = "Product Code: "+productCode;
+      productNameItem.innerHTML                   = "Product Name: "+productName;
+      productPriceItem.innerHTML                  = "Unit Price: "+euro.format(productPrice);  
 
 }
 

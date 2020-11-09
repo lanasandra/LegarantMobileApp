@@ -93,10 +93,11 @@ text-align: left;
 
 .productItem
 {
-  background: linear-gradient(0deg, rgba(245,245,245,1) 0%, rgba(177,227,145,1) 100%);
+  background: rgba(177,227,145,1);
   border: none;
   border-radius: 5px;
   color: grey;
+  margin-top: 5px;
   padding-left: 3px;
 
 }

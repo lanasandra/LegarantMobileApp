@@ -76,11 +76,11 @@ loginButton.addEventListener('click', function(e) {
   xhr.open('POST', '/api/getContact', true);
   xhr.setRequestHeader("Content-type", "application/json");
   xhr.onload = function () {
-      // do something to response
-      //console.log("xhr.response", xhr.response);
-      response = JSON.parse(xhr.response);
-      console.log("response", response.firstname);
 
+    if (request.readyState === XMLHttpRequest.DONE && request.status === 200) {
+      
+      response = JSON.parse(xhr.response);
+      
       // Call function to display contact details
         displayContactDetails(response);
 
@@ -92,9 +92,13 @@ loginButton.addEventListener('click', function(e) {
       
       // display contact informations 
         displayContactInformations(response.firstname);  
-  
 
-    };
+    } else {
+
+      document.getElementById("errorMessage").innerHTML= "Sorry but we couldn't find your account with these informations."
+    }
+  };
+  
   xhr.send(JSON.stringify({
     password: passwordInput.value,
     email: emailInput.value
@@ -113,11 +117,11 @@ registerButton.addEventListener('click', function(e){
   xhr.open('POST', '/api/register', true);
   xhr.setRequestHeader("Content-type", "application/json");
   xhr.onload = function () {
-      // do something to response
-      //console.log("xhr.response", xhr.response);
-      response = JSON.parse(xhr.response);
-      console.log("response", response.sfid);
 
+    if (request.readyState === XMLHttpRequest.DONE && request.status === 200) {
+      
+      response = JSON.parse(xhr.response);
+      
       alert("Votre mot de passe a bien été enregistré !");
 
       // Call function to display contact details
@@ -130,9 +134,15 @@ registerButton.addEventListener('click', function(e){
         displayLegarantProduct();
       
       // display contact informations 
-        displayContactInformations(response.firstname);        
+        displayContactInformations(response.firstname);  
 
-    };
+    } else {
+
+          document.getElementById("errorMessage").innerHTML= "Sorry but we couldn't find your account with these informations."
+
+    }
+  };
+
   xhr.send(JSON.stringify({
     password: passwordInput.value,
     firstName: firstNameInput.value,
@@ -203,19 +213,20 @@ function displayContractDetails(salesforceId){
   xhr.open('POST', '/api/getContract', true);
   xhr.setRequestHeader("Content-type", "application/json");
   xhr.onload = function () {
-      // do something to response
-      //console.log("xhr.response", xhr.response);
-      response = JSON.parse(xhr.response);
-      console.log("response", response);
       
-        // display contract informations 
-        
+    if (request.readyState === XMLHttpRequest.DONE && request.status === 200) {
+      
+      response = JSON.parse(xhr.response);
+      
+      // display contract informations 
         document.getElementById("contactContractNumber").innerHTML    = "Contract Number: "+response.contractnumber;
         document.getElementById("contactContractStartDate").innerHTML = "Contract Start Date: "+(response.startdate).split("T")[0];
         document.getElementById("contactContractEndDate").innerHTML   = "Contract End Date: "+(response.enddate).split("T")[0];
         document.getElementById("contactContractTerm").innerHTML      = "Contract Term (months): "+response.contractterm;
        
-  
+    } else {
+      document.getElementById("contactContractNumber").innerHTML      = "We don't find a contract related to your account";
+    }
 
     };
   xhr.send(JSON.stringify({
@@ -228,19 +239,12 @@ function displayLegarantProduct() {
   var xhr = new XMLHttpRequest();
   xhr.open('POST', '/api/getProducts', true);
   xhr.onload = function () {
-      // do something to response
-      //console.log("xhr.response", xhr.response);
+      
       response = JSON.parse(xhr.response);
-      console.log("response", response);
-      console.log(response[0]);
         
       // display product informations 
+      for (var product in response) displayProducts(response[product])
 
-      for (var product in response) {
-        
-        displayProducts(response[product])
-
-      }
   }   
   xhr.send();
 }
@@ -267,15 +271,15 @@ function displayProducts(product){
       productCodeItem.className                   = "productCodeItem";
       productItem.appendChild(productCodeItem);
 
-      productCodeItem.innerHTML                   = "Product Code: "+productCode;
-      productNameItem.innerHTML                   = "Product Name: "+productName;
-      productPriceItem.innerHTML                  = "Unit Price: "+euro.format(productPrice);  
+      productNameItem.innerHTML                   = productName;
+      productPriceItem.innerHTML                  = "Unit Price: "+euro.format(productPrice); 
+      productCodeItem.innerHTML                   = "Product Code: "+productCode; 
 
 }
 
 
-// Formating the product price
-const euro = new Intl.NumberFormat('en-EN', {
+// FORMATING THE PRODUCT PRICE
+const euro = new Intl.NumberFormat('fr-FR', {
   style: 'currency',
   currency: 'EUR',
   minimumFractionDigits: 2

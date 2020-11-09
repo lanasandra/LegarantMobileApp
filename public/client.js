@@ -79,9 +79,9 @@ loginButton.addEventListener('click', function(e) {
     password: passwordInput.value,
     email: emailInput.value
   }));
-  xhr.onload = function () {
+  xhr.onload = function() {
 
-    if (xhr.status == 200) {
+    if (xhr.status === 200) {
       
       response = JSON.parse(xhr.response);
       

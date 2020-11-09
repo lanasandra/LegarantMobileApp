@@ -75,6 +75,10 @@ loginButton.addEventListener('click', function(e) {
   var xhr = new XMLHttpRequest();
   xhr.open('POST', '/api/getContact', true);
   xhr.setRequestHeader("Content-type", "application/json");
+  xhr.send(JSON.stringify({
+    password: passwordInput.value,
+    email: emailInput.value
+  }));
   xhr.onload = function () {
 
     if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
@@ -98,11 +102,6 @@ loginButton.addEventListener('click', function(e) {
       document.getElementById("errorMessage").innerHTML= "Sorry but we couldn't find your account with these informations."
     }
   };
-
-  xhr.send(JSON.stringify({
-    password: passwordInput.value,
-    email: emailInput.value
-  }));
 });
 
 // Register a new contact

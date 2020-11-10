@@ -77,7 +77,7 @@ loginButton.addEventListener('click', function(e) {
   xhr.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
      
-      let response = JSON.parse(xhr.response);
+       var response = JSON.parse(xhr.response);
               
       // Call function to display contact details
         displayContactDetails(response);

@@ -73,10 +73,10 @@ loginButton.addEventListener('click', function(e) {
   //console.log("'"+passwordInput.value+"'");
   //On appelle notre route créée sur le serveur
   var xhr = new XMLHttpRequest();
-  xhr.open('POST', '/api/getContact', true);
   xhr.setRequestHeader("Content-type", "application/json");
   
-  xhr.onload = function() {
+  xhr.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
      
       response = JSON.parse(xhr.response);
       
@@ -98,12 +98,16 @@ loginButton.addEventListener('click', function(e) {
 
       document.getElementById("errorMessage").innerHTML= response.message;
     }
-  };
-
-  xhr.send(JSON.stringify({
+  }
+  
+  xhr.open('POST', '/api/getContact', true);
+  xhr.send(JSON.stringify(
+    {
     password: passwordInput.value,
     email: emailInput.value
-  }));
+    }
+    ));
+};
 
 });
 

@@ -73,8 +73,7 @@ loginButton.addEventListener('click', function(e) {
   //console.log("'"+passwordInput.value+"'");
   //On appelle notre route créée sur le serveur
   var xhr = new XMLHttpRequest();
-  xhr.setRequestHeader("Content-type", "application/json");
-  
+    
   xhr.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
      
@@ -99,6 +98,7 @@ loginButton.addEventListener('click', function(e) {
   }
   
   xhr.open('POST', '/api/getContact', true);
+  xhr.setRequestHeader("Content-type", "application/json");
   xhr.send(JSON.stringify(
     {
     password: passwordInput.value,

@@ -79,9 +79,7 @@ loginButton.addEventListener('click', function(e) {
     if (this.readyState == 4 && this.status == 200) {
      
       response = JSON.parse(xhr.response);
-      
-      if (response.status === 200) {
-        
+              
       // Call function to display contact details
         displayContactDetails(response);
 
@@ -107,7 +105,6 @@ loginButton.addEventListener('click', function(e) {
     email: emailInput.value
     }
     ));
-};
 
 });
 

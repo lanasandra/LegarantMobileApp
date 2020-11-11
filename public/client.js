@@ -28,6 +28,7 @@ var contactCity         = document.getElementById("salesCity");
 var contactCountry      = document.getElementById("salesCountry");
 var contactSalesforceId = document.getElementById("salesSalesforceId");
 
+
 /*-----------------------------------------------------------------------*/
 
 
@@ -59,6 +60,7 @@ function displayLoginPage() {
   loginButton.style.display= "block";
   loginButton.style.margin="auto";
 }
+
 
 /*-----------------------------------------------------------------------*/
 
@@ -111,9 +113,6 @@ loginButton.addEventListener('click', function(e) {
 registerButton.addEventListener('click', function(e){
   e.preventDefault();
  
-  console.log('button was clicked');
-  
-
   //Create our request
   var xhr = new XMLHttpRequest();
   
@@ -159,10 +158,6 @@ registerButton.addEventListener('click', function(e){
 updateButton.addEventListener('click', function(e){
   e.preventDefault();
  
-  console.log(contactFirstName.value,contactLastName.value, contactEmail.value,contactPhone.value,contactStreet.value, contactCountry.value, contactSalesforceId.value)
-  console.log('button was clicked');
-  
-
   //Create our request
   var xhr = new XMLHttpRequest();
   
@@ -228,7 +223,7 @@ function displayContractDetails(salesforceId){
     if (xhr.readyState == 4) {
       if(xhr.status == 200 && xhr.responseText!="") {
       
-      var   response = JSON.parse(xhr.response);
+      var response = JSON.parse(xhr.response);
       
       // display contract informations 
         document.getElementById("contactContractNumber").innerHTML    = "Contract Number: "+response.contractnumber;
@@ -300,8 +295,6 @@ function displayProducts(product){
       productCodeItem.innerHTML                   = "Product Code: "+productCode; 
 
 }
-
-
 
 // FORMATING THE PRODUCT PRICE
 const euro = new Intl.NumberFormat('fr-FR', {

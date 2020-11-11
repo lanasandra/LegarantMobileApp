@@ -74,7 +74,7 @@ loginButton.addEventListener('click', function(e) {
   //On appelle notre route créée sur le serveur
   var xhr = new XMLHttpRequest();
     
-  xhr.onreadystatechange = function() {
+  xhr.onload= function() {
     if (this.readyState == 4 && this.status == 200) {
      
        var response = JSON.parse(xhr.response);

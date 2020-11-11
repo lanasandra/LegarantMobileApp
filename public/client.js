@@ -93,7 +93,7 @@ loginButton.addEventListener('click', function(e) {
 
     } else {
 
-      document.getElementById("errorMessage").innerHTML= response.message;
+      document.getElementById("errorMessage").innerHTML= "Sorry but we couldn't find your account with these informations.";
     }
   }
   

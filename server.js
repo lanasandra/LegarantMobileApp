@@ -53,7 +53,7 @@ app.post('/api/getContact', (req, res) => {
 
   }).catch(err => {
 
-    res.status(500).json({ "message": "Sorry but we couldn't find your account with these informations."});
+    res.status(500);
 
   })
 });

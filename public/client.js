@@ -68,10 +68,8 @@ function displayLoginPage() {
 loginButton.addEventListener('click', function(e) {
   e.preventDefault();
  
-  console.log('button was clicked');
-  console.log(passwordInput.value);
-  //console.log("'"+passwordInput.value+"'");
-  //On appelle notre route créée sur le serveur
+  
+  //Create our request
   var xhr = new XMLHttpRequest();
     
   xhr.onreadystatechange = function() {
@@ -116,15 +114,14 @@ registerButton.addEventListener('click', function(e){
   console.log('button was clicked');
   
 
-  //On appelle notre route créée sur le serveur
+  //Create our request
   var xhr = new XMLHttpRequest();
-  xhr.open('POST', '/api/register', true);
-  xhr.setRequestHeader("Content-type", "application/json");
-  xhr.onload = function () {
-
-    if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+  
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState == 4) {
+      if(xhr.status == 200 && xhr.responseText!="") {
       
-      response = JSON.parse(xhr.response);
+      var response = JSON.parse(xhr.response);
       
       alert("Votre mot de passe a bien été enregistré !");
 
@@ -140,19 +137,22 @@ registerButton.addEventListener('click', function(e){
       // display contact informations 
         displayContactInformations(response.firstname);  
 
-    } else {
+      } else {
 
           document.getElementById("errorMessage").innerHTML= "Sorry but we couldn't find your account with these informations."
-
+      } 
     }
   };
-
-  xhr.send(JSON.stringify({
+  xhr.open('POST', '/api/register', true);
+  xhr.setRequestHeader("Content-type", "application/json");
+  xhr.send(JSON.stringify(
+    {
     password: passwordInput.value,
     firstName: firstNameInput.value,
     lastName: lastNameInput.value,
     email: emailInput.value
-    }));
+    }
+    ));
 });
 
 // Update contacts details
@@ -163,19 +163,27 @@ updateButton.addEventListener('click', function(e){
   console.log('button was clicked');
   
 
-  //On appelle notre route créée sur le serveur
+  //Create our request
   var xhr = new XMLHttpRequest();
+  
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState == 4) {
+      if(xhr.status == 200){
+      
+        var response = JSON.parse(xhr.response);
+        
+        document.getElementById("updateMessage").textContent = response.message;
+      } else {
+
+        document.getElementById("updateMessage").textContent = "Sorry, but we are able tu update your contact details.";
+        document.getElementById("updateMessage").style.color ="Red";
+      }
+    };
+  }
   xhr.open('POST', '/api/update', true);
   xhr.setRequestHeader("Content-type", "application/json");
-  xhr.onload = function () {
-      // do something to response
-        response = JSON.parse(xhr.response);
-        console.log("xhr.response", xhr.response);
-
-        document.getElementById("updateMessage").textContent = response.message;
-
-    };
-  xhr.send(JSON.stringify({
+  xhr.send(JSON.stringify(
+    {
     firstName:      contactFirstName.value,
     lastName:       contactLastName.value,
     email:          contactEmail.value,
@@ -184,7 +192,8 @@ updateButton.addEventListener('click', function(e){
     mailingCity:    contactCity.value,
     mailingCountry: contactCountry.value,
     sfid:           contactSalesforceId.value
-    }));
+    }
+    ));
 });
 
 /*-----------------------------------------------------------------------*/
@@ -214,13 +223,12 @@ function displayContactDetails(contact){
 function displayContractDetails(salesforceId){
 
   var xhr = new XMLHttpRequest();
-  xhr.open('POST', '/api/getContract', true);
-  xhr.setRequestHeader("Content-type", "application/json");
-  xhr.onload = function () {
+  
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState == 4) {
+      if(xhr.status == 200 && xhr.responseText!="") {
       
-    if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
-      
-      response = JSON.parse(xhr.response);
+      var   response = JSON.parse(xhr.response);
       
       // display contract informations 
         document.getElementById("contactContractNumber").innerHTML    = "Contract Number: "+response.contractnumber;
@@ -228,29 +236,41 @@ function displayContractDetails(salesforceId){
         document.getElementById("contactContractEndDate").innerHTML   = "Contract End Date: "+(response.enddate).split("T")[0];
         document.getElementById("contactContractTerm").innerHTML      = "Contract Term (months): "+response.contractterm;
        
-    } else {
-      document.getElementById("contactContractNumber").innerHTML      = "We don't find a contract related to your account";
+      } else {
+      document.getElementById("contactContractNumber").innerHTML      = "We couldn't find a contract related to your account";
+      }
     }
-
-    };
-  xhr.send(JSON.stringify({
-    sfid: salesforceId}));
+  };
+  xhr.open('POST', '/api/getContract', true);
+  xhr.setRequestHeader("Content-type", "application/json");
+  xhr.send(JSON.stringify(
+    {
+    sfid: salesforceId
+    }
+  ));
 };
 
  
 function displayLegarantProduct() {
 
   var xhr = new XMLHttpRequest();
-  xhr.open('POST', '/api/getProducts', true);
-  xhr.onload = function () {
+  
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState == 4) {
+      if(xhr.status == 200 && xhr.responseText!="") {
       
-      response = JSON.parse(xhr.response);
+      var response = JSON.parse(xhr.response);
         
       // display product informations 
       for (var product in response) displayProducts(response[product])
 
-  }   
-  xhr.send();
+      } else {
+        blocProductDetails.style.display= "none";
+      }
+    }
+  }
+xhr.open('POST', '/api/getProducts', true);  
+xhr.send();
 }
 
 function displayProducts(product){
@@ -280,6 +300,7 @@ function displayProducts(product){
       productCodeItem.innerHTML                   = "Product Code: "+productCode; 
 
 }
+
 
 
 // FORMATING THE PRODUCT PRICE

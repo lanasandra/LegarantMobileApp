@@ -74,8 +74,9 @@ loginButton.addEventListener('click', function(e) {
   //On appelle notre route créée sur le serveur
   var xhr = new XMLHttpRequest();
     
-  xhr.onload= function() {
-    if (this.readyState == 4 && this.status == 200) {
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState == 4) {
+      if(xhr.status == 200 && xhr.responseText!="") {
      
        var response = JSON.parse(xhr.response);
               
@@ -91,12 +92,12 @@ loginButton.addEventListener('click', function(e) {
       // display contact informations 
         displayContactInformations(response.firstname);  
 
-    } else {
+      } else {
 
       document.getElementById("errorMessage").innerHTML= "Sorry but we couldn't find your account with these informations.";
+      }
     }
   }
-  
   xhr.open('POST', '/api/getContact', true);
   xhr.setRequestHeader("Content-type", "application/json");
   xhr.send(JSON.stringify(

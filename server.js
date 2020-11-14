@@ -1,7 +1,9 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
-const dotenv = require('dotenv').config({path: __dirname + '/.env'})
+const { Client } = require('pg');
+const dotenv = require('dotenv');
+dotenv.config();
 
 app.use(express.static('public'));
 app.use(bodyParser.json());
@@ -17,23 +19,22 @@ app.set('port', process.env.PORT || 5432);
  
 // Set up heroku environment variables
 
-var host = process.env.DB_HOST;
-var port = process.env.PORT;
-var user = process.env.DB_USER;
-var password = process.env.DB_PASSWORD;
-var database = process.env.DB_DATABASE;
+console.log(process.env);
+
 // Creation of the connection to postgres
-const { Client } = require('pg');
+
+
 const client = new Client({
-  host : host, 
-  port: port,
-  user: user,
-  password: password,
-  database: database,
+  host : process.env.DATABASE_HOST, 
+  port: process.env.DATABASE_PORT,
+  user: process.env.DATABASE_USER,
+  password: process.env.DATABASE_PASSWORD,
+  database: process.env.DATABASE,
   ssl: {
     rejectUnauthorized: false
   }
 })
+
 
 // connexion to postgres
 client.connect(err => {

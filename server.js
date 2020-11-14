@@ -1,9 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
-const dotenv = require('dotenv');
-dotenv.config();
-
+const dotenv = require('dotenv').config({path: __dirname + '/.env'})
 
 app.use(express.static('public'));
 app.use(bodyParser.json());

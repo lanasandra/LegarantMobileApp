@@ -145,21 +145,18 @@ text-align: left;
 @media all and (max-width: 768px)
 {
 
-  #blocDetails
+  .blocFields
   {
    
     width: 90%;
     margin: 5px auto;
   }
 
- .blocFields
- {
+ #blocDetails
+  {
   display: flex;
   flex-direction: column;
- }
- #blocContactDetails, #blocContractDetails, #blocProductDetails
-
- {
-   width: 90%;
- }
+  width: 90%;
+  }
+ 
 }

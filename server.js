@@ -16,22 +16,16 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
 
 app.set('port', process.env.PORT || 5432);
-//Setup some environment variables (heroku app)
  
-var port = process.env.PORT; 
-var host = process.env.DB_HOST;
-var user = process.env.DB_USER;  
-var password = process.env.DB_PASSWORD 
-var database = process.env.DB_DATABASE 
 
 // Creation of the connection to postgres
 const { Client } = require('pg');
 const client = new Client({
-  host :host,
-  port: port,
-  user: user,
-  password: password,
-  database: database,
+  host : process.env.DB_HOST, 
+  port: process.env.PORT,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_DATABASE,
   ssl: {
     rejectUnauthorized: false
   }

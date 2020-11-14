@@ -145,7 +145,7 @@ text-align: left;
 @media all and (max-width: 768px)
 {
 
-  #blocDetails, #blocContractDetails, #blocProductDetails
+  #blocDetails
   {
    
     width: 90%;
@@ -154,7 +154,12 @@ text-align: left;
 
  .blocFields
  {
+  display: flex;
+  flex-direction: column;
+ }
+ #blocContactDetails, #blocContractDetails, #blocProductDetails
+
+ {
    width: 90%;
  }
-
 }

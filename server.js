@@ -15,9 +15,10 @@ app.use(express.json());
 // Parse URL-encoded bodies (as sent by HTML forms)
 app.use(express.urlencoded({ extended: true }))
 
+app.set('port', process.env.PORT || 5432);
 //Setup some environment variables (heroku app)
  
-var port = process.env.PORT || 5432; 
+var port = process.env.PORT; 
 var host = process.env.DB_HOST;
 var user = process.env.DB_USER;  
 var password = process.env.DB_PASSWORD 
@@ -138,5 +139,5 @@ app.post('/api/update', (req, res) => {
 });
   
 app.listen(app.get('port'), function () {
-  console.log('Express server listening on port ' + port);
+  console.log('Express server listening on port ' + app.get('port'));
 });

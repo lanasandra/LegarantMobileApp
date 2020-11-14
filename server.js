@@ -15,15 +15,22 @@ app.use(express.json());
 // Parse URL-encoded bodies (as sent by HTML forms)
 app.use(express.urlencoded({ extended: true }))
 
+//Setup some environment variables (heroku app)
+ 
+var port = process.env.PORT || 5432; 
+var host = process.env.DB_HOST;
+var user = process.env.DB_USER;  
+var password = process.env.DB_PASSWORD 
+var database = process.env.DB_DATABASE 
 
 // Creation of the connection to postgres
 const { Client } = require('pg');
 const client = new Client({
-  host :process.env.DB_HOST,
-  port: process.env.DB_PORT,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_DATABASE,
+  host :host,
+  port: port,
+  user: user,
+  password: password,
+  database: database,
   ssl: {
     rejectUnauthorized: false
   }
@@ -131,5 +138,5 @@ app.post('/api/update', (req, res) => {
 });
   
 app.listen(app.get('port'), function () {
-  console.log('Express server listening on port ' + process.env.PORT);
+  console.log('Express server listening on port ' + port);
 });

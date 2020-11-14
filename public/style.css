@@ -158,5 +158,11 @@ text-align: left;
   flex-direction: column;
   width: 90%;
   }
+
+  #blocContactDetails, #blocContractDetails, #blocProductDetails
+  {
+    width: 90%;
+    margin: 5px auto;
+  }
  
 }

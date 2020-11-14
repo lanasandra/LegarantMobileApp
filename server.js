@@ -17,9 +17,6 @@ app.use(express.urlencoded({ extended: true }))
 
 app.set('port', process.env.PORT || 5432);
  
-// Set up heroku environment variables
-
-console.log(process.env);
 
 // Creation of the connection to postgres
 

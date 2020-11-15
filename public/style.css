@@ -141,3 +141,28 @@ text-align: left;
   color: red;
   font-family: 'Source Sans Pro', arial, sans-serif;
 }
+
+@media all and (max-width: 768px)
+{
+
+  .blocFields
+  {
+   
+    width: 90%;
+    margin: 5px auto;
+  }
+
+ #blocDetails
+  {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  }
+
+  #blocContactDetails, #blocContractDetails, #blocProductDetails
+  {
+    width: 90%;
+    margin: 5px auto;
+  }
+ 
+}

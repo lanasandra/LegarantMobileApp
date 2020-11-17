@@ -114,7 +114,7 @@ text-align: left;
   margin-left: 5px;
 }
 
-#salesStreet
+#salesStreet, #contactEmail
 {
   width: 350px;
 }
